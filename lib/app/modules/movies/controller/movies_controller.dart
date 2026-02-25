@@ -7,4 +7,14 @@ class MoviesController extends GetxController {
   void addNewMovie() {
     Get.toNamed(Routes.MOVIE_FORM);
   }
+
+  final Map<String, String> movie = {
+    'title': '',
+    'description': '',
+    'directors': '',
+    'synopsis': '',
+    'image': '',
+  };
+
+  get movieForm => null;
 }

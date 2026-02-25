@@ -3,17 +3,69 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class MovieForm extends GetView<MoviesController> {
-  const MovieForm({super.key});
-
+  MovieForm({super.key});
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
-    appBar: AppBar(title: Text('MovieForm')),
+      appBar: AppBar(title: Text('Adicione um novo filme'), centerTitle: true),
 
-    body: SafeArea(
-      child: Text('MovieFormController'))
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Form(
+          key: _formKey,
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                TextFormField(
+                  decoration: InputDecoration(labelText: 'Título do filme'),
+                  textInputAction: TextInputAction.next,
+                  validator: (v) => v == null || v.trim().isEmpty
+                      ? 'Informe o nome do filme'
+                      : null,
+                  onSaved: (v) =>
+                      controller.movieForm['title'] = v?.trim() ?? '',
+                ),
+                SizedBox(height: 12),
+
+                TextFormField(
+                  decoration: InputDecoration(labelText: 'Descrição'),
+                  textInputAction: TextInputAction.next,
+                  validator: (v) => v == null || v.trim().isEmpty
+                      ? 'Informe a descrição do filme'
+                      : null,
+                  onSaved: (v) =>
+                      controller.movieForm['description'] = v?.trim() ?? '',
+                ),
+                SizedBox(height: 12),
+
+                TextFormField(
+                  decoration: InputDecoration(labelText: 'Diretores'),
+                  textInputAction: TextInputAction.next,
+                  validator: (v) => v == null || v.trim().isEmpty
+                      ? 'Informe os diretores do filme'
+                      : null,
+                  onSaved: (v) =>
+                      controller.movieForm['directors'] = v?.trim() ?? '',
+                ),
+                SizedBox(height: 12),
+
+                TextFormField(
+                  decoration: InputDecoration(labelText: 'Sinopse'),
+                  textInputAction: TextInputAction.next,
+                  validator: (v) => v == null || v.trim().isEmpty
+                      ? 'Informe a sinopse do filme'
+                      : null,
+                  onSaved: (v) =>
+                      controller.movieForm['synopsis'] = v?.trim() ?? '',
+                ),
+                SizedBox(height: 12),
+              ],
+            ),
+          ),
+        ),
+      ),
     );
   }
 }
