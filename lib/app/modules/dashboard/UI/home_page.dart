@@ -7,6 +7,6 @@ class HomePage extends GetView<HomePageController> {
   @override
   Widget build(BuildContext context) {
     
-    return Scaffold(appBar: AppBar(title: Text('HomePage')), Container());
+    return Scaffold(appBar: AppBar(title: Text('Summer Class Movies'),centerTitle: True,), Container());
   }
 }
