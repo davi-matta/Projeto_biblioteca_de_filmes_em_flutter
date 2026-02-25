@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:biblioteca_flutter/app/modules/movies/controller/movies_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -50,7 +52,12 @@ class MovieForm extends GetView<MoviesController> {
                       controller.movieForm['directors'] = v?.trim() ?? '',
                 ),
                 SizedBox(height: 12),
-
+                controller.imageNotifier.value != null
+                    ? Image.file(
+                        File(controller.imageNotifier.value!.path),
+                        height: 200,
+                      )
+                    : Container(),
                 TextFormField(
                   decoration: InputDecoration(labelText: 'Sinopse'),
                   maxLength: 4,
