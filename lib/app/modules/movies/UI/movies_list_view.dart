@@ -10,21 +10,11 @@ class MoviesListView extends GetView<MoviesController> {
   Widget build(BuildContext context) {
     final List<String> titles = [
       "RED",
-      "YELLOW",
-      "BLACK",
-      "CYAN",
-      "BLUE",
-      "GREY",
       "",
     ];
 
     final List<Widget> images = [
       Container(color: Colors.red),
-      Container(color: Colors.yellow),
-      Container(color: Colors.black),
-      Container(color: Colors.cyan),
-      Container(color: Colors.blue),
-      Container(color: Colors.grey),
       Container(
         color: Colors.transparent,
         child: Center(
@@ -48,7 +38,9 @@ class MoviesListView extends GetView<MoviesController> {
         // optional
       },
       onSelectedItem: (index) {
-        // optional
+        if (index == images.length - 1) {
+          controller.addNewMovie();
+        }
       },
       initialPage: 0, // optional
       align: ALIGN.CENTER, // optional
