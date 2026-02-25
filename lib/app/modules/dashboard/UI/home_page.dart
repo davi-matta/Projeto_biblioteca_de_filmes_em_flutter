@@ -4,15 +4,9 @@ import 'controller/home_page_controller.dart';
 
 // ignore: use_key_in_widget_constructors
 class HomePage extends GetView<HomePageController> {
-
   @override
   Widget build(BuildContext context) {
-
-    return Scaffold(
-    appBar: AppBar(title: Text('HomePage')),
-
-    body: SafeArea(
-      child: Text('MyController'))
-    );
+    
+    return Scaffold(appBar: AppBar(title: Text('HomePage')), Container());
   }
 }
