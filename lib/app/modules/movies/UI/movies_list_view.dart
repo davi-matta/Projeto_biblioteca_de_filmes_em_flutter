@@ -1,6 +1,7 @@
 import 'package:biblioteca_flutter/app/modules/movies/controller/movies_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:vertical_card_pager/vertical_card_pager.dart';
 
 class MoviesListView extends GetView<MoviesController> {
   const MoviesListView({super.key});
@@ -8,12 +9,51 @@ class MoviesListView extends GetView<MoviesController> {
 
   @override
   Widget build(BuildContext context) {
+    final List<String> titles = ["RED", "YELLOW", "BLACK", "CYAN", "BLUE", "GREY", ];
 
+    final List<Widget> images = [
+      Container(
+        color: Colors.red,
+      ),
+        Container(
+        color: Colors.yellow,
+      ),
+        Container(
+        color: Colors.black,
+      ),
+        Container(
+        color: Colors.cyan,
+      ),
+        Container(
+        color: Colors.blue,
+      ),
+        Container(
+        color: Colors.grey,
+      ),
+    ];
     return Scaffold(
-    appBar: AppBar(title: Text('Movies List')),
-
-    body: SafeArea(
-      child: Text('MoviesController'))
+      body: SafeArea(
+        child: Column(
+          children: <Widget>[
+            Expanded(
+              child: Container(
+                child: VerticalCardPager(
+                  titles: titles,  // required
+                  images: images,  // required
+                  textStyle: TextStyle(color: Colors.white, fontWeight: FontWeight.bold), // optional
+                  onPageChanged: (page) { // optional
+                  },
+                  onSelectedItem: (index) { // optional
+                  },
+                  initialPage: 0, // optional
+                  align : ALIGN.CENTER, // optional
+                  physics : ClampingScrollPhysics() // optional 
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

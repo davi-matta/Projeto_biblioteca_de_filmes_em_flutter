@@ -4,7 +4,7 @@ import 'package:biblioteca_flutter/app/modules/splash/UI/controller/bidings/spla
 import 'package:biblioteca_flutter/app/modules/splash/UI/splash_page.dart';
 import 'package:biblioteca_flutter/app/routes/app_routes.dart';
 import 'package:get/get_navigation/src/routes/get_route.dart';
-import 'package:get/utils.dart';
+
 
 abstract class AppPages {
   static final routes = [
