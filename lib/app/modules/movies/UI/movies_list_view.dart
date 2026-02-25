@@ -9,7 +9,7 @@ class MoviesListView extends GetView<MoviesController> {
 
   @override
   Widget build(BuildContext context) {
-    final List<String> titles = ["RED", "YELLOW", "BLACK", "CYAN", "BLUE", "GREY", ];
+    final List<String> titles = ["RED", "YELLOW", "BLACK", "CYAN", "BLUE", "GREY", "", ];
 
     final List<Widget> images = [
       Container(
@@ -30,6 +30,22 @@ class MoviesListView extends GetView<MoviesController> {
         Container(
         color: Colors.grey,
       ),
+        Container (
+          color: Colors.transparent,
+          child: Center(
+            child: Container(
+              width: 72,
+              height: 72,
+              decoration: BoxDecoration(
+                color: Colors.black,
+              ),
+              child: const Icon(Icons.add, size: 40, color: Colors.white),
+                
+                
+              
+            ),
+          )
+        )
     ];
     return Scaffold(
       body: SafeArea(
