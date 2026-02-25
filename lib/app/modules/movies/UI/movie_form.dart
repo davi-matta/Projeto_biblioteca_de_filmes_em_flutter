@@ -53,6 +53,7 @@ class MovieForm extends GetView<MoviesController> {
 
                 TextFormField(
                   decoration: InputDecoration(labelText: 'Sinopse'),
+                  maxLength: 4,
                   textInputAction: TextInputAction.next,
                   validator: (v) => v == null || v.trim().isEmpty
                       ? 'Informe a sinopse do filme'
@@ -61,6 +62,30 @@ class MovieForm extends GetView<MoviesController> {
                       controller.movieForm['synopsis'] = v?.trim() ?? '',
                 ),
                 SizedBox(height: 12),
+
+                ElevatedButton(
+                  onPressed: () {
+                    final formState = _formKey.currentState;
+                    if (formState != null && formState.validate()) {
+                      formState.save();
+
+                      print(controller.movieForm);
+                      Get.back();
+                      Get.snackbar(
+                        'Sucesso',
+                        'Filme adicionado',
+                        snackPosition: SnackPosition.BOTTOM,
+                      );
+                    } else {
+                      Get.snackbar(
+                        'Erro',
+                        'Preencha os campos obrigatórios',
+                        snackPosition: SnackPosition.BOTTOM,
+                      );
+                    }
+                  },
+                  child: Text('Salvar'),
+                ), // ElevatedButton
               ],
             ),
           ),
