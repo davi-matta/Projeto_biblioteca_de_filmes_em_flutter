@@ -1,3 +1,4 @@
+import 'package:biblioteca_flutter/app/modules/movies/UI/movies_list_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'controller/home_page_controller.dart';
@@ -17,6 +18,10 @@ class HomePage extends GetView<HomePageController> {
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
         ),
-    )));
+    ),
+    child: MoviesListView(),
+    ),
+      
+    );
   }
 }
