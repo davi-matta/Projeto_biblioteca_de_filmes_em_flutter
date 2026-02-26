@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "698737973836",
+    "project_id": "summerclass2026-1-d6d76",
+    "storage_bucket": "summerclass2026-1-d6d76.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:698737973836:android:93ceeda103aca7a4a172e9",
+        "android_client_info": {
+          "package_name": "com.example.biblioteca_flutter"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDc0i2snIgYiTcEznJtG2XUYWntT0-Y814"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
