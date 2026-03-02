@@ -15,13 +15,28 @@ class MoviesController extends GetxController {
   final RxList<Movie> movies = <Movie>[].obs;
   final RxBool isLoading = false.obs;
   final RxBool isProcessingImage = false.obs;
-
-  
-  
   
   final ImagePicker picker = ImagePicker();
   final ValueNotifier<XFile?> imageNotifier = ValueNotifier<XFile?>(null);
+  
   @override
+  void onInit() {
+    super.onInit();
+    loadMovies();
+  }
+
+  Future<void> loadMovies() async {
+    try {
+      isLoading.value = true;
+      final fetchedMovies = await _repository.fetchMovies();
+      movies.assignAll(fetchedMovies);
+    } catch (e) {
+      Get.snackbar('Erro', 'Falha ao carregar filmes: $e');
+    } finally {
+      isLoading.value = false;
+    }
+  }
+
   addNewMovie() {
     Get.toNamed(Routes.MOVIE_FORM);
   }
