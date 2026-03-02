@@ -11,6 +11,7 @@ class MoviesController extends GetxController {
   MoviesController();
 
   final MovieRepository _repository = MovieRepository();
+  final ImageService _imageService = ImageService();
   
 
   
