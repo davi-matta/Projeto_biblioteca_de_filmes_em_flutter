@@ -15,4 +15,25 @@ class Movie {
     this.imageBase64,
   });
 
-  
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'title': title,
+      'description': description,
+      'directors': directors,
+      'synopsis': synopsis,
+      'imageBase64': imageBase64,
+    };
+  }
+
+  factory Movie.fromJson(Map<String, dynamic> json) {
+    return Movie(
+      id: json['id'] as String?,
+      title: json['title'] as String? ?? '',
+      description: json['description'] as String? ?? '',
+      directors: json['directors'] as String? ?? '',
+      synopsis: json['synopsis'] as String? ?? '',
+      imageBase64: json['imageBase64'] as String?,
+    );
+  }
+}
