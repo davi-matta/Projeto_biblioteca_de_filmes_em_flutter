@@ -83,25 +83,35 @@ class MovieForm extends GetView<MoviesController> {
                           backgroundColor: Colors.redAccent,
                         ),
                       );
-                      
-                      formState.save();
-
-                      print(controller.movieForm);
-                      Get.back();
-                      Get.snackbar(
-                        'Sucesso',
-                        'Filme adicionado',
-                        snackPosition: SnackPosition.BOTTOM,
-                      );
-                    } else {
-                      Get.snackbar(
-                        'Erro',
-                        'Preencha os campos obrigatórios',
-                        snackPosition: SnackPosition.BOTTOM,
-                      );
+                      return;
                     }
-                  },
-                  child: Text('Salvar'),
+                    formState!.save();
+                    try {
+                          await controller.saveMovie();
+                          controller.imageNotifier.value = null;
+                          formState.reset();
+                          Get.showSnackbar(
+                            GetSnackBar(
+                              title: 'Sucesso',
+                              message: 'Filme adicionado com sucesso!',
+                              duration: Duration(seconds: 3),
+                              snackPosition: SnackPosition.BOTTOM,
+                              backgroundColor: Colors.green,
+                            ), // GetSnackBar
+                          );
+                        } catch (e) {
+                          Get.showSnackbar(
+                            GetSnackBar(
+                              title: 'Erro',
+                              message: e.toString().replaceFirst('Exception: ', ''),
+                              duration: Duration(seconds: 3),
+                              snackPosition: SnackPosition.BOTTOM,
+                              backgroundColor: Colors.red,
+                            ), // GetSnackBar
+                          );
+                        }
+                      },
+                      child: Text('Salvar'),
                 ), // ElevatedButton
               ],
             ),
