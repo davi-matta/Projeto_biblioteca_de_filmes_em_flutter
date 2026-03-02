@@ -51,6 +51,27 @@ class MoviesController extends GetxController {
   
   get movieForm => null;
 
+  Future<void> saveMovie() async {
+  try {
+    final newMovie = Movie(
+      id: '',
+      title: movieForm['title']!,
+      description: movieForm['description']!,
+      directors: movieForm['directors']!,
+      synopsis: movieForm['synopsis']!,
+      imageBase64: (movieForm['image'] != null && movieForm['image'].toString().isNotEmpty)
+          ? movieForm['imageBase64'] 
+          : null,
+    );
+    await _repository.saveMovie(newMovie);
+    
+    await loadMovies();
+  } catch (e) {
+    print('Erro: Falha ao salvar filme: $e');
+    rethrow;
+  }
+}
+
   Future<void> pickImage() async {
   try {
     final XFile? picked = await picker.pickImage(source: ImageSource.gallery);
