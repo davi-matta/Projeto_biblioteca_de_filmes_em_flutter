@@ -71,9 +71,19 @@ class MovieForm extends GetView<MoviesController> {
                 SizedBox(height: 12),
 
                 ElevatedButton(
-                  onPressed: () {
+                  onPressed: () async {
                     final formState = _formKey.currentState;
                     if (formState != null && formState.validate()) {
+                      Get.showSnackbar(   
+                        GetSnackBar(
+                          title: 'Erro',
+                          message: 'Preencha os campos',
+                          duration: Duration(seconds: 2),
+                          snackPosition: SnackPosition.BOTTOM,
+                          backgroundColor: Colors.redAccent,
+                        ),
+                      );
+                      
                       formState.save();
 
                       print(controller.movieForm);
