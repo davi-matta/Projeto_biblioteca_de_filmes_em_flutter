@@ -13,7 +13,8 @@ class MoviesController extends GetxController {
   final MovieRepository _repository = MovieRepository();
   final ImageService _imageService = ImageService();
   final RxList<Movie> movies = <Movie>[].obs;
-  
+  final RxBool isLoading = false.obs;
+  final RxBool isProcessingImage = false.obs;
 
   
   
