@@ -2,6 +2,7 @@ import 'package:biblioteca_flutter/app/modules/movies/model/movies_model.dart';
 import 'package:biblioteca_flutter/app/modules/movies/repository/movie_repository.dart';
 import 'package:biblioteca_flutter/app/modules/movies/service/image_service.dart';
 import 'package:biblioteca_flutter/app/routes/app_routes.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -18,7 +19,7 @@ class MoviesController extends GetxController {
   
   final ImagePicker picker = ImagePicker();
   final ValueNotifier<XFile?> imageNotifier = ValueNotifier<XFile?>(null);
-  
+  final auth = FirebaseAuth.instance;
   @override
   void onInit() {
     super.onInit();
@@ -62,6 +63,7 @@ class MoviesController extends GetxController {
       imageBase64: (movieForm['image'] != null && movieForm['image'].toString().isNotEmpty)
           ? movieForm['imageBase64'] 
           : null,
+      createdBy: auth.currentUser?.uid ?? '', // Substitua pelo ID do usuário autenticado
     );
     await _repository.saveMovie(newMovie);
     

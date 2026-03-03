@@ -14,6 +14,7 @@ class MovieProvider {
       directors: movie.directors,
       synopsis: movie.synopsis,
       imageBase64: movie.imageBase64,
+      createdBy:  movie.createdBy,
     );
     await docRef.set(movieWithId.toJson());
   }
