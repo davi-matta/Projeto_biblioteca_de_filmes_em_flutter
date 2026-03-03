@@ -10,6 +10,8 @@ class SignInService {
 
 
   SignInService();
+  
+  static get g_auth => null;
 
   Future<User?> signInWithGoogle() async {
     try {
