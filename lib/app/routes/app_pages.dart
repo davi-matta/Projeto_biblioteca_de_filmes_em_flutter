@@ -1,5 +1,6 @@
 import 'package:biblioteca_flutter/app/modules/dashboard/UI/controller/bidings/home_bidings.dart';
 import 'package:biblioteca_flutter/app/modules/dashboard/UI/home_page.dart';
+import 'package:biblioteca_flutter/app/modules/login/UI/login_page.dart';
 import 'package:biblioteca_flutter/app/modules/movies/UI/movie_form.dart';
 import 'package:biblioteca_flutter/app/modules/movies/bindings/movies_bindings.dart';
 import 'package:biblioteca_flutter/app/modules/splash/UI/controller/bidings/splash_bidings.dart';
@@ -29,5 +30,10 @@ abstract class AppPages {
       page: () => MovieForm(),
       binding: MoviesBindings(),
     ),
+      GetPage(
+        name: Routes.LOGIN,
+        page: () => LoginPage(),
+        // binding: LoginBidings(),
+      ),
   ];
 }
