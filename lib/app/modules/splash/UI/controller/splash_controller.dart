@@ -1,4 +1,4 @@
-import 'dart:ffi';
+
 
 import 'package:biblioteca_flutter/app/routes/app_routes.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -12,6 +12,7 @@ class SplashController extends GetxController {
   RxBool isLoading = false.obs;
   bool isSignedIn = false;  
   
+  @override
   void onInit() {
     super.onInit();
     _loadData();
@@ -24,7 +25,7 @@ class SplashController extends GetxController {
     isLoading.value = false;
     finishLoading();
   }
-  goToHomePage(){
+  void goToHomePage(){
     Get.offAllNamed(Routes.HOME);
   }
   void finishLoading(){

@@ -6,12 +6,13 @@ import 'package:google_sign_in/google_sign_in.dart';
 class SignInService {
   final auth = fb.FirebaseAuth.instance;
   
-  final g_auth.GoogleSignIn googleSignIn = g_auth.GoogleSignIn();
 
 
   SignInService();
   
   static get g_auth => null;
+  
+  get googleSignIn => null;
 
   Future<User?> signInWithGoogle() async {
     try {
